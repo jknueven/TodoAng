@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html ng-app="TodoList" lang='en'>
     <head>
         <meta charset='utf-8'>
         <title>TODO List</title>
@@ -9,20 +9,29 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'>
 
         <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,400italic' rel='stylesheet' type='text/css'>
+        <script src="node_modules/angular/angular.js"></script>
         <link rel='stylesheet' type='text/css' href='css/main.css'>
     </head>
-    <body ng-app>
+    <body ng-controller="Todo as controller">
 
         <header>
             <h1>todos</h1>
         </header>
 
         <main>
-            <form action='' method='post'>
-                <input type='text' class='new-todo' placeholder='What needs to be done?'>
+            <form ng-valid ng-submit="controller.submitForm()">
+                <input ng-model="controller.form.content" type='text' class='new-todo' placeholder='What needs to be done?'>
             </form>
 
-            <ul class='items'>
+            <ul ng-repeat="item in controller.list" class='items'>
+                <li>
+                    <article class="{{}}">
+                        <button class='check'></button>
+                        <p>{{item.content}}</p>
+                        <input type='text' class='edit-todo' value='learn html'>
+                        <button class='delete'>X</button>
+                    </article>
+                </li>
                 <!-- example of existing item (incomplete)
                 <li>
                     <article>
@@ -67,6 +76,6 @@
                 <button class='clear'>Clear completed</button>
             </footer>
         </main>
-
+        <script src="js/main.js"></script>
     </body>
 </html>
