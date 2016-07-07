@@ -23,13 +23,12 @@
                 <input ng-model="controller.form.content" type='text' class='new-todo' placeholder='What needs to be done?'>
             </form>
 
-            <ul ng-repeat="item in controller.list" class='items'>
+            <ul ng-repeat="item in controller.list track by $index" class='items'>
                 <li>
-                    <article class="{{}}">
-                        <button class='check'></button>
+                    <article class='{{}}'>
+                        <button ng-click="controller.completed()" class='check'></button>
                         <p>{{item.content}}</p>
-                        <input type='text' class='edit-todo' value='learn html'>
-                        <button class='delete'>X</button>
+                        <button ng-click="controller.delete(item)" class='delete'>X</button>
                     </article>
                 </li>
                 <!-- example of existing item (incomplete)
@@ -77,5 +76,7 @@
             </footer>
         </main>
         <script src="js/main.js"></script>
+        <script src="js/factories/storage.js"></script>
+        <script src="js/controllers/todo.js"></script>
     </body>
 </html>
