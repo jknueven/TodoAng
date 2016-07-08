@@ -67,12 +67,12 @@
                 <p class='remaining'><span class='incomplete-items'>{{controller.counter}}</span> items left</p>
                 <nav>
                     <ul>
-                        <li><button class='show-all active'>All</button></li>
-                        <li><button class='show-active'>Active</button></li>
-                        <li><button class='show-completed'>Completed</button></li>
+                        <li><button ng-click="controller.all(item)" class='show-all active'>All</button></li>
+                        <li><button ng-click="controller.active(false)" class='show-active'>Active</button></li>
+                        <li><button ng-click="controller.complete(true)" class='show-completed'>Completed</button></li>
                     </ul>
                 </nav>
-                <button class='clear'>Clear completed</button>
+                <button ng-click="controller.deleteComp()" class='clear'>Clear completed</button>
             </footer>
         </main>
         <script src="js/main.js"></script>

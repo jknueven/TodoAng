@@ -32,6 +32,17 @@ angular.module("TodoList").controller("Todo", function(API) {
 		vm.remaining();
 	}
 
+	vm.deleteComp = function(){
+		
+		vm.list.forEach(function(item){
+			if (item.isComplete === true){
+			var del = vm.list.indexOf(item);
+			vm.list.splice(del, vm.list.length);
+			API.saveList(vm.list);
+			vm.remaining();
+			};
+		});
+	}
 
 	vm.completed = function(item) {
 		console.log(item);
@@ -41,6 +52,11 @@ angular.module("TodoList").controller("Todo", function(API) {
         else if (item.isComplete === true){
         	item.isComplete = false;
         };
+        vm.remaining();
+	}
+
+	vm.active = function(isComplete) {
+		console.log(isComplete);
 	}
 
 	vm.submitForm = function(){
