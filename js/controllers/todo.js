@@ -8,7 +8,7 @@ angular.module("TodoList").controller("Todo", function(API) {
 	vm.remaining = function(){
 		vm.counter=0;
 		vm.list.forEach(function(item){
-			console.log(item.isComplete);
+			//console.log(item.isComplete);
 		if (item.isComplete === false){
 			vm.counter ++;
 		};
@@ -55,8 +55,9 @@ angular.module("TodoList").controller("Todo", function(API) {
         vm.remaining();
 	}
 
-	vm.active = function(isComplete) {
-		console.log(isComplete);
+	vm.activeState = function(x) {
+		vm.active = x;
+
 	}
 
 	vm.submitForm = function(){

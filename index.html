@@ -23,8 +23,8 @@
                 <input ng-model="controller.form.content" type='text' class='new-todo' placeholder='What needs to be done?'>
             </form>
 
-            <ul ng-repeat="item in controller.list track by $index" class='items'>
-                <li>
+            <ul class='items'>
+                <li ng-repeat="item in controller.list | filter:{isComplete: controller.active}">
                     <article ng-class="{completed: item.isComplete}">
                         <button ng-click="controller.completed(item)" ng-model="Todo.completed" class='check'></button>
                         <p>{{item.content}}</p>
@@ -67,9 +67,9 @@
                 <p class='remaining'><span class='incomplete-items'>{{controller.counter}}</span> items left</p>
                 <nav>
                     <ul>
-                        <li><button ng-click="controller.all(item)" class='show-all active'>All</button></li>
-                        <li><button ng-click="controller.active(false)" class='show-active'>Active</button></li>
-                        <li><button ng-click="controller.complete(true)" class='show-completed'>Completed</button></li>
+                        <li><button ng-click="controller.activeState()" class='show-all active'>All</button></li>
+                        <li><button ng-click="controller.activeState('false')" class='show-active'>Active</button></li>
+                        <li><button ng-click="controller.activeState('true')" class='show-completed'>Completed</button></li>
                     </ul>
                 </nav>
                 <button ng-click="controller.deleteComp()" class='clear'>Clear completed</button>
