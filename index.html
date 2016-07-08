@@ -25,8 +25,8 @@
 
             <ul ng-repeat="item in controller.list track by $index" class='items'>
                 <li>
-                    <article class='{{}}'>
-                        <button ng-click="controller.completed()" class='check'></button>
+                    <article ng-class="{completed: item.isComplete}">
+                        <button ng-click="controller.completed(item)" ng-model="Todo.completed" class='check'></button>
                         <p>{{item.content}}</p>
                         <button ng-click="controller.delete(item)" class='delete'>X</button>
                     </article>

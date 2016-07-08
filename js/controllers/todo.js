@@ -32,8 +32,19 @@ angular.module("TodoList").controller("Todo", function(API) {
 		vm.remaining();
 	}
 
+
+	vm.completed = function(item) {
+		console.log(item);
+        if (item.isComplete === false){
+        	item.isComplete = true;
+        }
+        else if (item.isComplete === true){
+        	item.isComplete = false;
+        };
+	}
+
 	vm.submitForm = function(){
-      console.log(this.form);
+     // console.log(this.form);
       var newobj = { "content": vm.form.content, "isComplete": false };
       vm.list.push(newobj);
       API.saveList(vm.list);
